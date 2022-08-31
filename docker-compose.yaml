@@ -1,0 +1,12 @@
+version: '3.0'
+
+services:
+  database:
+    image: mongo
+    container_name: database
+    ports:
+      - 27117:27017
+    volumes:
+      - .db:/data/db
+    extra_hosts:
+      database: 127.0.0.1
