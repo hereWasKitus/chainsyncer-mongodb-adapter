@@ -1,6 +1,7 @@
 {
   "name": "@chainsyncer/mongodb-adapter",
-  "version": "0.1.0",
+  "description": "MongoDB adapter for @chainsyncer",
+  "version": "0.1.1",
   "private": false,
   "scripts": {
     "serve": "vue-cli-service serve",
@@ -10,8 +11,7 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "mongodb": "^4.9.0",
-    "vue": "^2.6.14"
+    "mongodb": "^4.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
