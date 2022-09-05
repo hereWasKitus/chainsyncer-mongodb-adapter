@@ -1,4 +1,4 @@
-![Project Presentation](https://github.com/hereWasKitus/mongodb-adapter/blob/main/public/logo.jpg "MongoDB adapter")
+![Project Presentation](https://github.com/hereWasKitus/mongodb-adapter/blob/main/public/logo1.jpg "MongoDB adapter")
 
 # MongoDB Adapter
 
@@ -21,7 +21,7 @@ const Mongoose = require('mongoose');
 const { MongoDBAdapter } = require('@chainsyncer/mongodb-adapter');
 const { ChainSyncer } = require('chain-syncer');
 
-await Mongoose.connect('srv_string');
+await Mongoose.connect('mongodb+srv://server.example.com/test');
 const mongo_adapter = new MongoDBAdapter(Mongoose.connection.db);
 
 const syncer = new ChainSyncer(mongo_adapter, ...);
@@ -36,7 +36,7 @@ const { MongoClient } = require('mongodb');
 const { MongoDBAdapter } = require('@chainsyncer/mongodb-adapter');
 const { ChainSyncer } = require('chain-syncer');
 
-const connection = await MongoClient.connect( 'srv_string' );
+const connection = await MongoClient.connect( 'mongodb+srv://server.example.com/test' );
 const db = await connection.db( 'test' );
 
 const mongo_adapter = new MongoDBAdapter(db);
