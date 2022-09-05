@@ -36,5 +36,17 @@
       "debug": "1",
       "arch": "x64"
     }
+  },
+  "homepage": "https://github.com/hereWasKitus/mongodb-adapter#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hereWasKitus/mongodb-adapter.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hereWasKitus/mongodb-adapter/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
