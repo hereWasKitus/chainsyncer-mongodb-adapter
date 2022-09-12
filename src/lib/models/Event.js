@@ -1,66 +1,65 @@
 export class Event {
+  /**
+   * @type {string}
+   */
+  id;
 
   /**
    * @type {string}
    */
-  id
+  contract;
 
   /**
    * @type {string}
    */
-  contract
+  event;
 
   /**
    * @type {string}
    */
-  event
-
-  /**
-   * @type {string}
-   */
-  transaction_hash
+  transaction_hash;
 
   /**
    * @type {number}
    */
-  block_number
+  block_number;
 
   /**
    * @type {number}
    */
-  log_index
+  log_index;
 
   /**
    * @type {number}
    */
-  tx_index
+  tx_index;
 
   /**
    * @type {string}
    */
-  from_address
+  from_address;
 
   /**
    * @type {number}
    */
-  global_index
+  global_index;
 
   /**
    * @type {string}
    */
-  block_timestamp
+  block_timestamp;
 
   /**
    * @type {Array<number|string>}
    */
-  args
+  args;
 
   /**
    * @type {any}
    */
-  processed_subscribers
+  processed_subscribers;
 
-  constructor( data ) {
+  constructor(data) {
     this.id = data.id;
     this.contract = data.contract;
     this.event = data.event;
@@ -88,7 +87,7 @@ export class Event {
       global_index: this.global_index,
       block_timestamp: this.block_timestamp,
       args: this.args,
-      processed_subscribers: this.processed_subscribers
+      processed_subscribers: this.processed_subscribers,
     };
   }
 }

@@ -1,18 +1,18 @@
 export class Subscriber {
   /**
-  * @type {string}
-  */
-  id
+   * @type {string}
+   */
+  id;
 
   /**
-    * @type {string}
-    */
-  name
+   * @type {string}
+   */
+  name;
 
   /**
-  * @type {Array}
-  */
-  events
+   * @type {Array}
+   */
+  events;
 
   constructor(data) {
     this.id = data.id;
@@ -24,7 +24,7 @@ export class Subscriber {
     return {
       _id: this.id,
       name: this.name,
-      events: this.events
+      events: this.events,
     };
   }
 }

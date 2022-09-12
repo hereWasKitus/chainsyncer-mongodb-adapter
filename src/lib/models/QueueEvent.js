@@ -1,32 +1,31 @@
 export class QueueEvent {
+  /**
+   * @type {string}
+   */
+  id;
 
   /**
    * @type {string}
    */
-  id
+  event_id;
 
   /**
    * @type {string}
    */
-  event_id
+  event;
 
   /**
    * @type {string}
    */
-  event
+  contract;
 
   /**
    * @type {string}
    */
-  contract
+  subscriber;
 
-  /**
-   * @type {string}
-   */
-  subscriber
-
-  constructor( event, subscriber ) {
-    this.id = event.id + '_' + subscriber;
+  constructor(event, subscriber) {
+    this.id = event.id + "_" + subscriber;
     this.event_id = event.id;
     this.event = event.event;
     this.contract = event.contract;
@@ -39,7 +38,7 @@ export class QueueEvent {
       event_id: this.event_id,
       event: this.event,
       contract: this.contract,
-      subscriber: this.subscriber
+      subscriber: this.subscriber,
     };
   }
 }
