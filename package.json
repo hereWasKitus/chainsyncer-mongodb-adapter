@@ -1,7 +1,7 @@
 {
   "name": "@chainsyncer/mongodb-adapter",
   "description": "MongoDB adapter for @chainsyncer",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "private": false,
   "main": "dist/mongodb-adapter.umd.min.js",
   "scripts": {

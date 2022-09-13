@@ -1,3 +1,1 @@
-import { MongoDBAdapter } from "./main";
-
-export default MongoDBAdapter;
+export { MongoDBAdapter } from "./main";
