@@ -7606,7 +7606,7 @@ var MongoDBAdapter = /*#__PURE__*/function () {
       var _saveEvents = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(events, subscribers) {
         var _this = this;
 
-        var non_exist_ids, _loop, i;
+        var non_exist_ids, _loop, i, _ret;
 
         return _regeneratorRuntime().wrap(function _callee10$(_context11) {
           while (1) {
@@ -7656,12 +7656,21 @@ var MongoDBAdapter = /*#__PURE__*/function () {
                             var full = n.contract + "." + n.event;
                             return subs.events.includes(full);
                           });
-                          _context10.next = 4;
+
+                          if (filtered_events.length) {
+                            _context10.next = 4;
+                            break;
+                          }
+
+                          return _context10.abrupt("return", "continue");
+
+                        case 4:
+                          _context10.next = 6;
                           return _this.events_queue.insertMany(filtered_events.map(function (n) {
                             return new QueueEvent(n, subs.name).toMongoObject();
                           }));
 
-                        case 4:
+                        case 6:
                         case "end":
                           return _context10.stop();
                       }
@@ -7672,7 +7681,7 @@ var MongoDBAdapter = /*#__PURE__*/function () {
 
               case 12:
                 if ((_context11.t1 = _context11.t0()).done) {
-                  _context11.next = 17;
+                  _context11.next = 20;
                   break;
                 }
 
@@ -7680,10 +7689,20 @@ var MongoDBAdapter = /*#__PURE__*/function () {
                 return _context11.delegateYield(_loop(i), "t2", 15);
 
               case 15:
+                _ret = _context11.t2;
+
+                if (!(_ret === "continue")) {
+                  _context11.next = 18;
+                  break;
+                }
+
+                return _context11.abrupt("continue", 12);
+
+              case 18:
                 _context11.next = 12;
                 break;
 
-              case 17:
+              case 20:
               case "end":
                 return _context11.stop();
             }

@@ -210,6 +210,10 @@ export class MongoDBAdapter {
         return subs.events.includes(full);
       });
 
+      if (!filtered_events.length) {
+        continue;
+      }
+
       await this.events_queue.insertMany(
         filtered_events.map((n) => new QueueEvent(n, subs.name).toMongoObject())
       );
