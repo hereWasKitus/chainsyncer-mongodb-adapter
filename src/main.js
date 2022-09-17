@@ -16,16 +16,16 @@ export class MongoDBAdapter {
    *
    * @param {Object} db MongoDB instance
    */
-  constructor(db) {
+  constructor(db, opts = {}) {
     this.db = db;
-    this._initCollections();
+    this._initCollections(opts.prefix || "chsy_");
   }
 
-  _initCollections() {
-    this.events = this.db.collection("events");
-    this.events_queue = this.db.collection("events_queue");
-    this.subscribers = this.db.collection("subscribers");
-    this.latest_blocks = this.db.collection("latest_blocks");
+  _initCollections(prefix) {
+    this.events = this.db.collection(`${prefix}events`);
+    this.events_queue = this.db.collection(`${prefix}eventsqueue`);
+    this.subscribers = this.db.collection(`${prefix}subscribers`);
+    this.latest_blocks = this.db.collection(`${prefix}latestblocks`);
   }
 
   /**

@@ -6281,8 +6281,6 @@ var es_symbol_description = __webpack_require__(1817);
 var es_object_to_string = __webpack_require__(1539);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.symbol.iterator.js
 var es_symbol_iterator = __webpack_require__(2165);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
-var es_array_iterator = __webpack_require__(6992);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.iterator.js
 var es_string_iterator = __webpack_require__(8783);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-collections.iterator.js
@@ -6290,7 +6288,6 @@ var web_dom_collections_iterator = __webpack_require__(3948);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.from.js
 var es_array_from = __webpack_require__(1038);
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js
-
 
 
 
@@ -6428,12 +6425,9 @@ var es_object_create = __webpack_require__(8011);
 var es_object_get_prototype_of = __webpack_require__(489);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.object.set-prototype-of.js
 var es_object_set_prototype_of = __webpack_require__(8304);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
-var es_promise = __webpack_require__(8674);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.reverse.js
 var es_array_reverse = __webpack_require__(5069);
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
-
 
 
 
@@ -6450,8 +6444,6 @@ function _typeof(obj) {
   }, _typeof(obj);
 }
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/regeneratorRuntime.js
-
-
 
 
 
@@ -6828,7 +6820,6 @@ function _regeneratorRuntime() {
 ;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js
 
 
-
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
   try {
     var info = gen[key](arg);
@@ -6897,6 +6888,8 @@ function _createClass(Constructor, protoProps, staticProps) {
 var es_array_map = __webpack_require__(1249);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.split.js
 var es_string_split = __webpack_require__(3123);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.promise.js
+var es_promise = __webpack_require__(8674);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.find.js
 var es_array_find = __webpack_require__(9826);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.sort.js
@@ -6905,6 +6898,8 @@ var es_array_sort = __webpack_require__(2707);
 var es_array_includes = __webpack_require__(6699);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es.string.includes.js
 var es_string_includes = __webpack_require__(2023);
+// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.iterator.js
+var es_array_iterator = __webpack_require__(6992);
 ;// CONCATENATED MODULE: ./src/lib/models/Event.js
 
 
@@ -7111,6 +7106,8 @@ var MongoDBAdapter = /*#__PURE__*/function () {
    * @param {Object} db MongoDB instance
    */
   function MongoDBAdapter(db) {
+    var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
     _classCallCheck(this, MongoDBAdapter);
 
     _defineProperty(this, "latest_blocks", null);
@@ -7129,16 +7126,16 @@ var MongoDBAdapter = /*#__PURE__*/function () {
 
     this.db = db;
 
-    this._initCollections();
+    this._initCollections(opts.prefix || "chsy_");
   }
 
   _createClass(MongoDBAdapter, [{
     key: "_initCollections",
-    value: function _initCollections() {
-      this.events = this.db.collection("events");
-      this.events_queue = this.db.collection("events_queue");
-      this.subscribers = this.db.collection("subscribers");
-      this.latest_blocks = this.db.collection("latest_blocks");
+    value: function _initCollections(prefix) {
+      this.events = this.db.collection("".concat(prefix, "events"));
+      this.events_queue = this.db.collection("".concat(prefix, "eventsqueue"));
+      this.subscribers = this.db.collection("".concat(prefix, "subscribers"));
+      this.latest_blocks = this.db.collection("".concat(prefix, "latestblocks"));
     }
     /**
      *
