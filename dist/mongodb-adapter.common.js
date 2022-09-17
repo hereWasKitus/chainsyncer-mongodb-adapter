@@ -7254,12 +7254,21 @@ var MongoDBAdapter = /*#__PURE__*/function () {
                     id: n._id
                   }, n), subscriber);
                 });
-                _context3.next = 5;
+
+                if (unprocessed_events.length) {
+                  _context3.next = 5;
+                  break;
+                }
+
+                return _context3.abrupt("return");
+
+              case 5:
+                _context3.next = 7;
                 return this.events_queue.insertMany(unprocessed_events.map(function (n) {
                   return n.toMongoObject();
                 }))["catch"](function () {});
 
-              case 5:
+              case 7:
               case "end":
                 return _context3.stop();
             }

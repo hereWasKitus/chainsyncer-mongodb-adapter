@@ -73,6 +73,10 @@ export class MongoDBAdapter {
       .filter((n) => !n.processed_subscribers[subscriber])
       .map((n) => new QueueEvent({ id: n._id, ...n }, subscriber));
 
+    if (!unprocessed_events.length) {
+      return;
+    }
+
     await this.events_queue
       .insertMany(unprocessed_events.map((n) => n.toMongoObject()))
       .catch(() => {});
