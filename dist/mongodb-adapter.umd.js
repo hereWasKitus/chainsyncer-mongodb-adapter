@@ -7100,6 +7100,8 @@ var QueueEvent = /*#__PURE__*/function () {
 
 
 
+
+
 var MongoDBAdapter = /*#__PURE__*/function () {
   /**
    *
@@ -7482,9 +7484,12 @@ var MongoDBAdapter = /*#__PURE__*/function () {
 
               case 5:
                 events = _context7.sent;
+                events.forEach(function (n) {
+                  n.id = n._id;
+                });
                 return _context7.abrupt("return", events);
 
-              case 7:
+              case 8:
               case "end":
                 return _context7.stop();
             }

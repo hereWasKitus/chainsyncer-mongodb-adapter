@@ -146,6 +146,10 @@ export class MongoDBAdapter {
       .find({ _id: { $in: from_queue } })
       .toArray();
 
+    events.forEach((n) => {
+      n.id = n._id;
+    });
+
     return events;
   }
 
